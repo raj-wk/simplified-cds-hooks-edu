@@ -226,8 +226,8 @@ For some CDS services the end step will just display the card. For the patient-v
 Through this tutorial we have:
 
 
-1. Understood CDS Hooks.
-1. Try out a CDS Hook with HSPC&rsquo;s sandbox & CDS Hooks demo app
+1. Went through Overview of CDS Hooks.
+1. Tried out CDS Hook with HSPC&rsquo;s sandbox & CDS Hooks demo app
 
 
 
