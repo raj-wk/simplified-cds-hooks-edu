@@ -1,3 +1,22 @@
+- [Heading](#Overview)
+  * [Sub-heading](#Building a CDS Service)
+    + [Sub-sub-heading](#Endpoint for discovery)
+    + [Sub-sub-heading](#Develop a service)
+    + [Sub-sub-heading](#Create a SMART App)
+    + [Sub-sub-heading](#Test service with a sandbox)
+  * [Sub-heading](#Building an EHR Service)
+    + [Sub-sub-heading](#Calls discovery endpoint)
+    + [Sub-sub-heading](#Invoke service on patient-view hook)
+    + [Sub-sub-heading](#Support for FHIR resources on request or prefetch)
+    + [Sub-sub-heading](#Exposed non-secured FHIR server)
+    + [Sub-sub-heading](#Render card)
+    + [Sub-sub-heading](#Launch SMART app)
+  * [Sub-heading](#Try it out with WK CE Pathways CDS Hook Prototype )
+  * [Sub-heading](#Next Steps)
+    
+    
+    
+    
 # Overview 
 
 [CDS hooks](http://cds-hooks.org/#overview) is a vendor agnostic remote decision support specification. The specification defines a series of 'hooks' which provide information, or access to a SMART application, within a user's standard workflow. 
@@ -226,8 +245,8 @@ For some CDS services the end step will just display the card. For the patient-v
 Through this tutorial we have:
 
 
-1. Went through Overview of CDS Hooks.
-1. Tried out CDS Hook with HSPC&rsquo;s sandbox & CDS Hooks demo app
+1. Completed CDS Hooks overview.
+1. Tried CDS Hooks -  HSPC&rsquo;s sandbox & CDS Hooks demo app
 
 
 
