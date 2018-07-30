@@ -4,7 +4,7 @@
 
 A CDS hooks scenario typically includes two main actors: EHR FHIR Server, and a CDS Service. Below is an example interaction for the `patient-view` hook.
 
-![patient-view hook launch sequence](patient-view-hook-launch.png | width=600)
+![patient-view hook launch sequence](patient-view-hook-launch.png)
 
 From the returned **CDS card** the EHR may launch the SMART app following the guidance from [SMART on FHIR](http://docs.smarthealthit.org/authorization/).
 
@@ -78,11 +78,11 @@ You may already have created a SMART app prior to this step, but just in case th
 The CDS hooks initiative provides a publicly available [sandbox](http://sandbox.cds-hooks.org/) to test your service. 
 
 Select the configure hooks:<br>
-![](demo_configure_hooks1.png | width=200)
+![alt text](/demo_configure_hooks1.png)
 
 
 Delete the existing hooks, and then do a quick add with a reference to your CDS service:<br>
-![](demo_quick_add1.png | width=200)
+![alt text](/demo_quick_add1.png)
 
 After testing with the sandbox, you are ready to connect with an EHR service.
 
@@ -103,7 +103,7 @@ The CDS discovery endpoint provides the list of services a CDS provider supports
 
 Below is an example work flow where a business analyst accesses this list of available services by calling `GET https://example.com/cds-services` and then configures them in the system. 
 
-![business analyst configuration](analyst-configuration.png | width="600")
+![business analyst configuration](analyst-configuration.png)
 
 This image captures a business analyst reviewing services from one CDS provider. A business analyst may review services from multiple providers and configure appropriate services per user profiles.
 
@@ -173,7 +173,7 @@ Example card JSON:
       ]
     }
 
-Example card rendered: ![Card with SMART App linnk](premier_SMART-App_Card.png | width="600")
+Example card rendered: ![Card with SMART App linnk](premier_SMART-App_Card.png)
 
 ### Launch SMART app 
 
@@ -182,8 +182,3 @@ For some CDS services the end step will just display the card. For the patient-v
 ### Tested with external CDS service
 
 No development is complete without testing with a CDS service provider. Pick one from the [participants list](https://github.com/argonautproject/cds-hooks/wiki/Participants#cds-service-participants) and test away. When complete make sure to update the [testing matrix](https://github.com/argonautproject/cds-hooks/wiki/Readiness-and-Testing-Matrix).
-
-# Glossary
-***determine if this is appropriate here...
-hook 
-decision
