@@ -207,11 +207,33 @@ Example card rendered:
 For some CDS services the end step will just display the card. For the patient-view hook discussed here, we are focused on launching a SMART app. The CDS hooks guide places no additional constraints for launching a SMART app beyond those from SMART on FHIR.
 
 
-### Try it out with WK CE Pathways CDS Hook Prototype 
+## Try it out with WK CE Pathways CDS Hook Prototype 
 
 
-1. Call discovery endpoint to make sure discovery endpoint is up and running  ![End Point](https://prototypes.utdlab.com/argonaut/cds-services)
+1. Call discovery endpoint [End Point](https://prototypes.utdlab.com/argonaut/cds-services) to make sure discovery endpoint is up and running.  
 1. Log into HSPC Sandbox and Launch CDS Hooks Sandbox app
 1. Select Patient Joshua Hill - SMART-613876
-1. Add WK CE Pathway CDS Service to the CDS Hooks Sandbox     ![Add CDS Service](add-cds-service.png)
-1. View Rendered Card Response   ![Response](pathways-prostrate-hooks-card-response.png)
+1. Add WK CE Pathway CDS Service [End Point](https://prototypes.utdlab.com/argonaut/cds-services)  to the CDS Hooks Sandbox     
+
+![Add CDS Service](add-cds-service.png)
+
+1. View Rendered Card Response   
+
+![Response](pathways-prostrate-hooks-card-response.png)
+
+
+## Next Steps
+Through this tutorial we have:
+
+
+1. Understood CDS Hooks.
+1. Try out a CDS Hook with HSPC&rsquo;s sandbox & CDS Hooks demo app
+
+
+
+We&rsquo;ve configured a very basic patient-view hook that meets the base requirements of being a CDS Hooks specification. A couple of next steps you could look at are:
+
+1. Try calling another hook service.
+
+
+We&rsquo;re excited to see what you&rsquo;ll do to roll out and scale the WK CE implementation process!
