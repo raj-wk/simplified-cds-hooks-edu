@@ -4,7 +4,7 @@
 
 A CDS hooks scenario typically includes two main actors: EHR FHIR Server, and a CDS Service. Below is an example interaction for the `patient-view` hook.
 
-![patient-view hook launch sequence](patient-view-hook-launch.png | width="600")
+![patient-view hook launch sequence](patient-view-hook-launch.png | width=600)
 
 From the returned **CDS card** the EHR may launch the SMART app following the guidance from [SMART on FHIR](http://docs.smarthealthit.org/authorization/).
 
