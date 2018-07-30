@@ -8,11 +8,11 @@ A CDS hooks scenario typically includes two main actors: EHR FHIR Server, and a 
 
 From the returned **CDS card** the EHR may launch the SMART app following the guidance from [SMART on FHIR](http://docs.smarthealthit.org/authorization/).
 
-This tutorial will define each of the actors and provide details for implementing the `patient-view` hook. Any terms that require a more detailed definition are included in the [Glossary](https://github.com/argonautproject/cds-hooks/wiki/Introduction-to-CDS-Hooks-and-the-patient-view-hook#glossary).
+This tutorial will define each of the actors and provide details for implementing the `patient-view` hook. 
 
-<!-- CDS hooks is an open source (Apache) initiative launched by the [SMART](https://smarthealthit.org/) team.
+CDS hooks is an open source (Apache) initiative launched by the [SMART](https://smarthealthit.org/) team.
 
-The [Argonaut Project](http://argonautwiki.hl7.org/index.php?title=Main_Page) is accelerating the adoption of open interoperability standards and selected CDS Hooks. The Argonauts will develop a detailed -->
+The [Argonaut Project](http://argonautwiki.hl7.org/index.php?title=Main_Page) is accelerating the adoption of open interoperability standards and selected CDS Hooks. 
 
 If you are interested in deploying an EHR service jump to [building an EHR service](https://github.com/argonautproject/cds-hooks/wiki/Introduction-to-CDS-Hooks-and-the-patient-view-hook#building-an-ehr-service).
 
@@ -43,7 +43,6 @@ The CDS service must provide a stable endpoint for the EHR to discover the avail
 
 The attributes available to describe a CDS services is documented in the [CDS hooks specification](http://cds-hooks.org/#discovery).
 
-After you have created your open end point, make sure to publish in the [participant matrix](https://github.com/argonautproject/cds-hooks/wiki/Participants) <!-- Kevin - do we have generic place also? google sheet for connectathons, see https://groups.google.com/forum/#!topic/cds-hooks/2wcQOzcP7PM-->
  
  ### Develop a service
 With a stable open end point available it's time to complete development of a service. A CDS service could provide **information**, a **suggestion**, or a **SMART app** link. The focus of the Argonaut CDS hooks effort is a `patient-view` hook launching a SMART app so this guide will focus on the SMART app link.
@@ -77,11 +76,11 @@ You may already have created a SMART app prior to this step, but just in case th
 ### Test service with a sandbox
 The CDS hooks initiative provides a publicly available [sandbox](http://sandbox.cds-hooks.org/) to test your service. 
 
-Select the configure hooks:<br>
+Select the configure hooks:
 ![alt text](/demo_configure_hooks1.png)
 
 
-Delete the existing hooks, and then do a quick add with a reference to your CDS service:<br>
+Delete the existing hooks, and then do a quick add with a reference to your CDS service:
 ![alt text](/demo_quick_add1.png)
 
 After testing with the sandbox, you are ready to connect with an EHR service.
@@ -96,7 +95,7 @@ Build out following sections:
 1. Launch SMART app 
 1. Tested with external CDS service
 
-...security work is [under development](https://github.com/cds-hooks/docs/wiki/Proposed-Security-Model). 
+
 
 ### Calls discovery endpoint 
 The CDS discovery endpoint provides the list of services a CDS provider supports, and the hooks a service should be invoked on. An EHR may configure their system to support a set of hooks at a certain location in their users work flow, or build a dynamic capability to interact with a CDS Service provider within a work flow. For the best end-user experience, this guide recommends a business analyst configure which hooks an EHR will support. 
@@ -173,7 +172,8 @@ Example card JSON:
       ]
     }
 
-Example card rendered: ![Card with SMART App linnk](premier_SMART-App_Card.png)
+Example card rendered: 
+![Card with SMART App linnk](premier_SMART-App_Card.png)
 
 ### Launch SMART app 
 
