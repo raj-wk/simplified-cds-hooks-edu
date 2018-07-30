@@ -12,9 +12,7 @@ This tutorial will define each of the actors and provide details for implementin
 
 CDS hooks is an open source (Apache) initiative launched by the [SMART](https://smarthealthit.org/) team.
 
-The [Argonaut Project](http://argonautwiki.hl7.org/index.php?title=Main_Page) is accelerating the adoption of open interoperability standards and selected CDS Hooks. 
-
-If you are interested in deploying an EHR service jump to [building an EHR service](https://github.com/argonautproject/cds-hooks/wiki/Introduction-to-CDS-Hooks-and-the-patient-view-hook#building-an-ehr-service).
+If you are interested in deploying an EHR service jump to [building an EHR service](#building-an-ehr-service).
 
 ## Building a CDS Service
 A CDS service is an external service that responds to EHR requests through cards. There are several steps to setting up a CDS service: 
@@ -24,7 +22,7 @@ A CDS service is an external service that responds to EHR requests through cards
 1. Create a SMART app (or [borrowed](https://apps.smarthealthit.org/apps/pricing/open-source))
 1. Test service + SMART app with an EHR
 
- ### Endpoint for discovery
+### Endpoint for discovery
 The CDS service must provide a stable endpoint for the EHR to discover the available services. A system must expose their services at `{baseUrl}/cds-services`. A service endpoint that supports the `patient-view` hook may return:
 
     {
@@ -44,7 +42,7 @@ The CDS service must provide a stable endpoint for the EHR to discover the avail
 The attributes available to describe a CDS services is documented in the [CDS hooks specification](http://cds-hooks.org/#discovery).
 
  
- ### Develop a service
+### Develop a service
 With a stable open end point available it's time to complete development of a service. A CDS service could provide **information**, a **suggestion**, or a **SMART app** link. The focus of the Argonaut CDS hooks effort is a `patient-view` hook launching a SMART app so this guide will focus on the SMART app link.
 
 A CDS `patient-view` hook could return the following card:
@@ -110,28 +108,51 @@ This image captures a business analyst reviewing services from one CDS provider.
 The patient-view hook is invoked when a patient chart is opened. It's one of the most basic since the logic doesn't have any prior workflow dependencies. The service called on the patient-view hook could be dependent on patient characteristics, for example: sex, problems in problems list, active medications, etc. The current version of the CDS Hooks specification allows the EHR to decide which characteristics to consider. 
 
 ### Support for FHIR resources on request or prefetch
-Often a CDS service will require additional information from the EHR to perform the decision support logic, or determine the appropriate SMART app to return. Prefetch provides the EHR the capability to pass a resource when invoking a service. For example, with a patient resource included a service could do a geography search for potential environmental risk factors. Below is an example request invoked on patient-view with a patient included: (***fix server, not working for me)
+Often a CDS service will require additional information from the EHR to perform the decision support logic, or determine the appropriate SMART app to return. Prefetch provides the EHR the capability to pass a resource when invoking a service. For example, with a patient resource included a service could do a geography search for potential environmental risk factors. Below is an example request invoked on patient-view with a patient included: 
 
-    {
-       "hookInstance" : "23f1a303-991f-4118-86c5-11d99a39222e",
-       "fhirServer" : "http://hooks.smarthealthit.org:9080",
-       "hook" : "patient-view",
-       "redirect" : "http://hooks2.smarthealthit.org/service-done.html",
-       "user" : "Practitioner/example",
-       "context" : [],
-       "patient" : "1288992",
-       "prefetch" : {
-          "patientToGreet" : {
-             "response" : {
-                "status" : "200 OK"
-             },
-             "resource" : {
-                "resourceType" : "Patient",
-                "gender" : "male",
-                "birthDate" : "1925-12-23",
-                "id" : "1288992",
-                "active" : true
-             }
+    {  
+       "hookInstance":"d1577c69-dfbe-44ad-ba6d-3e05e953b2ea",
+       "fhirServer":"http://hooks.smarthealthit.org:9080",
+       "hook":"patient-view",
+       "fhirAuthorization":{  
+          "access_token":"some-opaque-fhir-access-token",
+          "token_type":"Bearer",
+          "expires_in":300,
+          "scope":"patient/Patient.read patient/Observation.read",
+          "subject":"cds-service4"
+       },
+       "user":"Practitioner/example",
+       "context":{  
+          "patientId":"1288992",
+          "encounterId":"89284"
+       },
+       "prefetch":{  
+          "p":{  
+             "resourceType":"Patient",
+             "gender":"male",
+             "birthDate":"1974-12-25",
+             "...":"<snipped for brevity>"
+          },
+          "a1c":{  
+             "resourceType":"Bundle",
+             "type":"searchset",
+             "entry":[  
+                {  
+                   "resource":{  
+                      "resourceType":"Observation",
+                      "code":{  
+                         "coding":[  
+                            {  
+                               "system":"http://loinc.org",
+                               "code":"4548-4",
+                               "display":"Hemoglobin A1c"
+                            }
+                         ]
+                      },
+                      "...":"<snipped for brevity>"
+                   }
+                }
+             ]
           }
        }
     }
@@ -139,12 +160,18 @@ Often a CDS service will require additional information from the EHR to perform 
 
 In some cases, additional information beyond what is included in the prefetch maybe required. The CDS service can request additional information using the FHIR REST APIs:
 
-`GET [base]/AllergyIntolerance?patient=[id]`
+    {
+      "prefetch": {
+        "p": "Patient/{{context.patientId}}",
+        "a1c": "Observation?patient={{context.patientId}}&code=4548-4",
+        "u": "Practitioner/{{user}}"
+      }
+    }
 
 It is recommended FHIR servers implement, CDS Services follow, the guidance in the [Argonaut Data Query Guide (DSTU2)](http://www.fhir.org/guides/argonaut/r2/) or [HL7 US Core (STU3)](http://hl7.org/fhir/us/core/index.html) implementation guides when retrieving additional resources. Each profile page within these implementation guides includes queries FHIR servers are required to support. 
 
 ### Exposed non-secured FHIR server
-A non secured FHIR server is important to support testing with a CDS service. When the EHR moves a hook implementation to production the system to is expected to follow the guidelines in  the spec
+A non secured FHIR server is important to support testing with a CDS service. When the EHR moves a hook implementation to production the system to is expected to follow the security guidelines in the spec
 
 ### Render card
 The CDS service will provide a response in the form a of a 'card'. Your EHR needs to be able to display the card.
@@ -178,3 +205,13 @@ Example card rendered:
 ### Launch SMART app 
 
 For some CDS services the end step will just display the card. For the patient-view hook discussed here, we are focused on launching a SMART app. The CDS hooks guide places no additional constraints for launching a SMART app beyond those from SMART on FHIR.
+
+
+### Try it out with WK CE Pathways CDS Hook Prototype 
+
+
+1. Call discovery endpoint to make sure discovery endpoint is up and running  ![End Point](https://prototypes.utdlab.com/argonaut/cds-services)
+1. Log into HSPC Sandbox and Launch CDS Hooks Sandbox app
+1. Select Patient Joshua Hill - SMART-613876
+1. Add WK CE Pathway CDS Service to the CDS Hooks Sandbox     ![Add CDS Service](add-cds-service.png)
+1. View Rendered Card Response   ![Response](pathways-prostrate-hooks-card-response.png)
