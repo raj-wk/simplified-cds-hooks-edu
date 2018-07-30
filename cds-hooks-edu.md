@@ -178,7 +178,3 @@ Example card rendered: ![Card with SMART App linnk](premier_SMART-App_Card.png)
 ### Launch SMART app 
 
 For some CDS services the end step will just display the card. For the patient-view hook discussed here, we are focused on launching a SMART app. The CDS hooks guide places no additional constraints for launching a SMART app beyond those from [SMART on FHIR](http://docs.smarthealthit.org/authorization/). 
-
-### Tested with external CDS service
-
-No development is complete without testing with a CDS service provider. Pick one from the [participants list](https://github.com/argonautproject/cds-hooks/wiki/Participants#cds-service-participants) and test away. When complete make sure to update the [testing matrix](https://github.com/argonautproject/cds-hooks/wiki/Readiness-and-Testing-Matrix).
