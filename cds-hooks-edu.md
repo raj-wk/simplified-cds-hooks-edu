@@ -4,7 +4,7 @@
 
 A CDS hooks scenario typically includes two main actors: EHR FHIR Server, and a CDS Service. Below is an example interaction for the `patient-view` hook.
 
-![patient-view hook launch sequence](patient-view-hook-launch.png)
+![patient-view hook launch sequence](patient-view-hook-launch.png | width="600")
 
 From the returned **CDS card** the EHR may launch the SMART app following the guidance from [SMART on FHIR](http://docs.smarthealthit.org/authorization/).
 
@@ -78,13 +78,12 @@ You may already have created a SMART app prior to this step, but just in case th
 The CDS hooks initiative provides a publicly available [sandbox](http://sandbox.cds-hooks.org/) to test your service. 
 
 Select the configure hooks:<br>
-<img src="demo_configure_hooks1.png" width="200">
+![](demo_configure_hooks1.png | width=200)
 
 
 Delete the existing hooks, and then do a quick add with a reference to your CDS service:<br>
-<img src="demo_quick_add1.png" width="200">
+![](demo_quick_add1.png | width=200)
 
-<!-- Kevin, have you tested the quick add? need to not have http://hooks.fhir.me:8082/-->
 After testing with the sandbox, you are ready to connect with an EHR service.
 
 ## Building an EHR Service
@@ -104,7 +103,7 @@ The CDS discovery endpoint provides the list of services a CDS provider supports
 
 Below is an example work flow where a business analyst accesses this list of available services by calling `GET https://example.com/cds-services` and then configures them in the system. 
 
-![business analyst configuration](analyst-configuration.png)
+![business analyst configuration](analyst-configuration.png | width="600")
 
 This image captures a business analyst reviewing services from one CDS provider. A business analyst may review services from multiple providers and configure appropriate services per user profiles.
 
@@ -174,7 +173,7 @@ Example card JSON:
       ]
     }
 
-Example card rendered: ![Card with SMART App linnk](premier_SMART-App_Card.png)
+Example card rendered: ![Card with SMART App linnk](premier_SMART-App_Card.png | width="600")
 
 ### Launch SMART app 
 
