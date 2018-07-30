@@ -76,11 +76,11 @@ You may already have created a SMART app prior to this step, but just in case th
 ### Test service with a sandbox
 The CDS hooks initiative provides a publicly available [sandbox](http://sandbox.cds-hooks.org/) to test your service. 
 
-Select the configure hooks:
+Select the configure hooks:  
 ![alt text](/demo_configure_hooks1.png)
 
 
-Delete the existing hooks, and then do a quick add with a reference to your CDS service:
+Delete the existing hooks, and then do a quick add with a reference to your CDS service:  
 ![alt text](/demo_quick_add1.png)
 
 After testing with the sandbox, you are ready to connect with an EHR service.
@@ -144,7 +144,7 @@ In some cases, additional information beyond what is included in the prefetch ma
 It is recommended FHIR servers implement, CDS Services follow, the guidance in the [Argonaut Data Query Guide (DSTU2)](http://www.fhir.org/guides/argonaut/r2/) or [HL7 US Core (STU3)](http://hl7.org/fhir/us/core/index.html) implementation guides when retrieving additional resources. Each profile page within these implementation guides includes queries FHIR servers are required to support. 
 
 ### Exposed non-secured FHIR server
-A non secured FHIR server is important to support testing with a CDS service. When the EHR moves a hook so to production the system to is expected to follow the guidelines in  the [security and authorization document](https://github.com/cds-hooks/docs/wiki/Proposed-Security-Model)
+A non secured FHIR server is important to support testing with a CDS service. When the EHR moves a hook implementation to production the system to is expected to follow the guidelines in  the spec
 
 ### Render card
 The CDS service will provide a response in the form a of a 'card'. Your EHR needs to be able to display the card.
@@ -172,9 +172,9 @@ Example card JSON:
       ]
     }
 
-Example card rendered: 
+Example card rendered:  
 ![Card with SMART App linnk](premier_SMART-App_Card.png)
 
 ### Launch SMART app 
 
-For some CDS services the end step will just display the card. For the patient-view hook discussed here, we are focused on launching a SMART app. The CDS hooks guide places no additional constraints for launching a SMART app beyond those from [SMART on FHIR](http://docs.smarthealthit.org/authorization/). 
+For some CDS services the end step will just display the card. For the patient-view hook discussed here, we are focused on launching a SMART app. The CDS hooks guide places no additional constraints for launching a SMART app beyond those from SMART on FHIR.
