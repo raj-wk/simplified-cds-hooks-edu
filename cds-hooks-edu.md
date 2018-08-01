@@ -229,10 +229,10 @@ For some CDS services the end step will just display the card. For the patient-v
 ## Try it out with WK CE Pathways CDS Hook Prototype 
 
 
-1. Call discovery endpoint [End Point](https://prototypes.utdlab.com/argonaut/cds-services) to make sure discovery endpoint is up and running.  
+1. Call WK CE Pathways CDS Hook Service discovery endpoint [End Point](https://prototypes.utdlab.com/argonaut/cds-services) to make sure it is up and running.  
 1. Log into HSPC Sandbox and Launch CDS Hooks Sandbox app
 1. Select Patient Joshua Hill - SMART-613876
-1. Add WK CE Pathway CDS Service [End Point](https://prototypes.utdlab.com/argonaut/cds-services)  to the CDS Hooks Sandbox     
+1. Add WK CE Pathway CDS Service [End Point](https://prototypes.utdlab.com/argonaut/cds-services) to the CDS Hooks demp app
 
 ![Add CDS Service](add-cds-service.png)
 
